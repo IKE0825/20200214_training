@@ -17,11 +17,10 @@ def imageToData(filename):
 
 def predictDigits(data):
     digits = sklearn.datasets.load_digits()
-    clf = sklearn.svm.SVC(gamma = 0.001) #機械学習用マシン
+    clf = sklearn.svm.SVC(gamma = 0.001,C=100) #機械学習用マシン
     clf.fit(digits.data,digits.target) 
     n = clf.predict([data])
     print("予測は= " , n)
 
-pdb.set_trace()
-data = imageToData(r"C:\Users\ec000248\Documents\Git\200222_training\2.png")
+data = imageToData("2.png")
 predictDigits(data)
