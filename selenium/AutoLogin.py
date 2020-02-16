@@ -3,25 +3,28 @@
 #pip install chromedriver-binary
 #chromedriverはchromeのバージョンと同じものを使用すること
 
-#デバッグ用ライブラリ
 import pdb
-#処理ステップ管理用ライブラリ
 import time
-
 from selenium import webdriver
-#from selenium.webdriver.common.by import By
-#from selenium.webdriver.support.ui import WebDriverWait
-#from selenium.webdriver.support import expcepted_conditions as EC
-#from selenium.common.exceptions import TimeoutException
 
 #Chromeのパスを指定
-path = r"/home/kenji-ito/chromedriver/chromedriver"
+path = r"/home/kenji-ito/firefoxdriver/geckodriver"
 
 #Chromeを起動
-browser = webdriver.Chrome(path)
-pdb.set_trace()
+driver = webdriver.Firefox()
 
 #ブラウザを開く
-browser.get('')
+driver.get('https://devjumlim.cybozu.com/login?redirect=https%3A%2F%2Fdevjumlim.cybozu.com%2F')
 time.sleep(1) #ブラウザが開くまで待つ
 
+usrId = driver.find_element_by_name('username')
+usrId.send_keys('ken_itou@daiseki-eco.co.jp')
+
+pW = driver.find_element_by_name('password')
+pW.send_keys('potenz@0825')
+
+link_el = driver.find_element_by_class_name('login-button')
+link_el.click()
+
+link_el = driver.find_element_by_xpath('/html/body/div[5]/div/div[1]/div/a[2]')
+link_el.click()
