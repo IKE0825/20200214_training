@@ -6,6 +6,7 @@
 import pdb
 import time
 from selenium import webdriver
+import sys
 
 #gegodriverのパスを指定
 # path = r"/home/kenji-ito/firefoxdriver/geckodriver"  #linuxの場合
